@@ -1,0 +1,22 @@
+version: "3.0"
+
+services:
+  verademo:
+    build: .
+    # command: ["catalina.sh","run"]
+    # container_name: verademo
+    depends_on: 
+      - mysql
+    ports:
+      - "8080:8080"
+  mysql:
+    image: mysql:8.0
+    container_name: verademo_db
+    expose:
+      - "3306"
+    environment: 
+      - MYSQL_ROOT_PASSWORD=foobar
+      - MYSQL_DATABASE=blab
+      - MYSQL_USER=blab
+      - MYSQL_PASSWORD='z2^E6J4$$;u;d'
+      # dbl $$ to escape the $ in password, and wrap in single-quotes
