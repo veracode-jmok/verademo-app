@@ -101,7 +101,7 @@ public class ResetController {
 			connect.setAutoCommit(false);
 
 			// Add the users
-			logger.info("Preparing the Stetement for adding users");
+			logger.info("Preparing the Statement for adding users");
 			usersStatement = connect.prepareStatement(
 					"INSERT INTO users (username, password, password_hint, created_at, last_login, real_name, blab_name) values (?, ?, ?, ?, ?, ?, ?);");
 			for (int i = 0; i < users.length; i++) {
@@ -119,7 +119,7 @@ public class ResetController {
 			connect.commit();
 
 			// Add the listeners
-			logger.info("Preparing the Stetement for adding listeners");
+			logger.info("Preparing the Statement for adding listeners");
 			listenersStatement = connect
 					.prepareStatement("INSERT INTO listeners (blabber, listener, status) values (?, ?, 'Active');");
 			for (int i = 1; i < users.length; i++) {
