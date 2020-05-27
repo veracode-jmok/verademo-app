@@ -26,35 +26,30 @@ public class Constants {
 
 	/**
 	 * Pull info from the system as an override, otherwise fall back to hardcoded values.
-	 * Environment variables are automatically set in AWS environments.
-	 * 	(kfr: The Elastic Beanstalk passes these as Env Props, while normal Tomcat does not,
-	 * 		so use Env Vars which can be passed as part of Docker startup)
+	 * 
+	 * For running in an AWS Elastic Beanstalk, the variables are set in EBS environments.
+	 * For running in a Docker image, the Tomcat's setenv.sh is used
 	 */
 	public Constants() {
-		//String dbnameProp = System.getProperty("RDS_DB_NAME");
-		String dbnameProp = System.getenv("RDS_DB_NAME");
+		String dbnameProp = System.getProperty("RDS_DB_NAME");
 		this.dbname = (dbnameProp == null) ? JDBC_DATABASE : dbnameProp;
 		logger.info("DB_NAME: " + this.dbname);
 		
-		//String hostnameProp = System.getProperty("RDS_HOSTNAME");
-		String hostnameProp = System.getenv("RDS_HOSTNAME");
+		String hostnameProp = System.getProperty("RDS_HOSTNAME");
 		this.hostname = (hostnameProp == null) ? JDBC_HOSTNAME : hostnameProp;
 		logger.info("HOSTNAME: " + this.hostname);
 
-		//String portProp = System.getProperty("RDS_PORT");
-		String portProp = System.getenv("RDS_PORT");
+		String portProp = System.getProperty("RDS_PORT");
 		this.port = (portProp == null) ? JDBC_PORT : portProp;
 		logger.info("PORT: " + this.port);
 
-		//String userProp = System.getProperty("RDS_USERNAME");
-		String userProp = System.getenv("RDS_USERNAME");
+		String userProp = System.getProperty("RDS_USERNAME");
 		this.username = (userProp == null) ? JDBC_USER : userProp;
 		logger.info("USERNAME: " + this.username);
 
-		//String passwordProp = System.getProperty("RDS_PASSWORD");
-		String passwordProp = System.getenv("RDS_PASSWORD");
+		String passwordProp = System.getProperty("RDS_PASSWORD");
 		this.password = (passwordProp == null) ? JDBC_PASSWORD : passwordProp;
-		logger.info("PASSWORD: you're kidding, right...");
+		logger.info("PASSWORD: " + this.password);
 	}
 
 	public static final Constants create() {
