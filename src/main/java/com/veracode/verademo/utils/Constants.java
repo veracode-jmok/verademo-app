@@ -60,7 +60,7 @@ public class Constants {
 		String connection = null;
 		try {
 			connection = String.format(
-					"jdbc:%s://%s:%s/%s?user=%s&password=%s",
+					"jdbc:%s://%s:%s/%s?user=%s&password=%s&useSSL=false",
 					JDBC_DRIVER,
 					hostname,
 					port,
@@ -68,6 +68,8 @@ public class Constants {
 					URLEncoder.encode(username, "UTF-8"),
 					URLEncoder.encode(password, "UTF-8")
 			);
+
+			//logger.info("JDBC Conn String: " + connection);
 		}
 		catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
