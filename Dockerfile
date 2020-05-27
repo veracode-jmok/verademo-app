@@ -2,7 +2,7 @@ FROM tomcat:jdk8-openjdk
 
 # website files
 COPY target/verademo.war /usr/local/tomcat/webapps
+COPY setenv.sh /usr/local/tomcat/bin
 
-# required?
-EXPOSE 8080   
+# run Tomcat
 CMD ["catalina.sh","run"]
