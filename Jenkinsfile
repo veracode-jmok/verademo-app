@@ -79,7 +79,7 @@ pipeline {
             steps {
                 echo 'Veracode SCA'
                 withCredentials([ string(credentialsId: 'SCA_Token', variable: 'SRCCLR_API_TOKEN')]) {
-                    nodejs(nodeJSInstallationName: 'NodeJS-12.0.0') {
+                    //nodejs(nodeJSInstallationName: 'NodeJS-12.0.0') {
                         script {
                             if(isUnix() == true) {
                                 sh "curl -sSL https://download.sourceclear.com/ci.sh | sh"
@@ -96,7 +96,7 @@ pipeline {
                                             '''
                             }
                         }
-                    }
+                    //}
                 }
             }
         }
