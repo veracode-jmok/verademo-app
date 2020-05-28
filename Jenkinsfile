@@ -82,10 +82,10 @@ pipeline {
                     //nodejs(nodeJSInstallationName: 'NodeJS-12.0.0') {
                         script {
                             if(isUnix() == true) {
-                                sh "curl -sSL https://download.sourceclear.com/ci.sh | sh"
+                                //sh "curl -sSL https://download.sourceclear.com/ci.sh | sh"
 
                                 // debug, no upload
-                                //sh "curl -sSL https://download.sourceclear.com/ci.sh | DEBUG=1 sh -s -- scan --no-upload"
+                                sh "curl -sSL https://download.sourceclear.com/ci.sh | DEBUG=1 sh -s -- scan --no-upload"
                             }
                             else {
                                 powershell '''
