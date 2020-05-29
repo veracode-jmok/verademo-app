@@ -35,12 +35,12 @@ dockerize:
     image: docker:stable
     stage: deploy
     variables:
-    #     DOCKER_HOST: tcp://docker:2375
         DOCKER_DRIVER: overlay2
+        # docker 19.03 has TLS on by default, see https://about.gitlab.com/releases/2019/07/31/docker-in-docker-with-docker-19-dot-03/
+        DOCKER_TLS_CERTDIR: ""  
         REPOSITORY_URL: $REPO_URL
     services:
-        # docker:19.03+ has TLS on by default, see https://gitlab.com/gitlab-org/gitlab-runner/issues/4501#workaround
-        - docker:18.09-dind
+        - docker:19.03.0-dind
     before_script:
         - apk add --update python3
         - pip3 install awscli
