@@ -42,7 +42,7 @@ dockerize:
     services:
         - docker:19.03.0-dind
     before_script:
-        - apk add --update python3
+        - apk add --update python3 py-pip
         - pip3 install awscli
     script:
         - $(aws ecr get-login --no-include-email --region us-east-2)
