@@ -59,7 +59,7 @@ pipeline {
                             // alternately, you could add --fail_on_severity '', but that would not show the
                             // flaws in the Jenkins log
 
-                            // issue-details true: add flaw details to the results.json file
+                            // issue_details true: add flaw details to the results.json file
                             try {
                                 if(isUnix() == true) {
                                     sh """
@@ -67,7 +67,7 @@ pipeline {
                                         unzip pipeline-scan-LATEST.zip pipeline-scan.jar
                                         java -jar pipeline-scan.jar --veracode_api_id '${VERACODE_API_ID}' \
                                             --veracode_api_key '${VERACODE_API_KEY}' \
-                                            --file target/verademo.war --issue-details true
+                                            --file target/verademo.war --issue_details true
                                         """
                                 }
                                 else {
@@ -76,7 +76,7 @@ pipeline {
                                             Expand-Archive -Path pipeline-scan.zip -DestinationPath veracode_scanner
                                             java -jar veracode_scanner\\pipeline-scan.jar --veracode_api_id '${VERACODE_API_ID}' \
                                             --veracode_api_key '${VERACODE_API_KEY}' \
-                                            --file target/verademo.war --issue-details true
+                                            --file target/verademo.war --issue_details true
                                             """
                                 }
                             } catch (err) {
