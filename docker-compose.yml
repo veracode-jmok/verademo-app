@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   verademo:
-    build: .
+    build: .s
     # command: ["catalina.sh","run"]
     # container_name: verademo
     depends_on: 
