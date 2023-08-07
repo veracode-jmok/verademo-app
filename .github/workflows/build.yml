@@ -3,8 +3,7 @@ name: Veracode Build Artifact
 run-name: Veracode Build Artifact
 
 on:
-  repository_dispatch:
-    types: [veracode-build]
+  push: 
 
 jobs:
   register:
