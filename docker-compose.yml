@@ -7,7 +7,7 @@ services:
     # container_name: verademo
     depends_on: 
       - mysql
-    ports:
+    ports:s
       - "8080:8080"
   mysql:
     image: mysql:8.0
